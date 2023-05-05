@@ -9,6 +9,7 @@ class ObstacleManager:
 
     def __init__(self):
         self.obstacles = []
+        self.death_sound = pygame.mixer.Sound('src/assets/sound/die.wav')
 
     def update(self, game):
         obstacle_type = [
@@ -28,6 +29,8 @@ class ObstacleManager:
                 game.player.reset_adventurer()
                 game.running = False
                 game.death_count += 1
+                self.death_sound.play()
+                self.death_sound.set_volume(0.2)
                 break
 
     def reset_obstacles(self):
