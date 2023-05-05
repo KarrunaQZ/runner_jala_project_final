@@ -25,7 +25,7 @@ class Game:
         self.background_y = 0
         self.player = Adventurer()
         self.obstacle_manager = ObstacleManager()
-        #self.power_up_manager = PowerUpManager()
+        self.power_up_manager = PowerUpManager()
         self.music_list = [
             r'src/assets/sound/Sound_1.mp3',
             r'src/assets/sound/Sound_2.mp3'
@@ -99,7 +99,7 @@ class Game:
         self.running = True
         self.player.run = True
         self.obstacle_manager.reset_obstacles()
-        #self.power_up_manager.reset_power_ups()
+        self.power_up_manager.reset_power_ups()
         self.game_speed = 15
         self.current_score = 0
         while self.running:
@@ -119,7 +119,7 @@ class Game:
         self.player.update(user_input)
         self.obstacle_manager.update(self)
         self.update_current_score()
-        #self.power_up_manager.update(self.current_score, self.game_speed, self.player)
+        self.power_up_manager.update(self.current_score, self.game_speed, self.player)
 
     def update_current_score(self):
         self.current_score += 1
@@ -134,8 +134,8 @@ class Game:
         self.player.draw(self.display)
         self.obstacle_manager.draw(self.display)
         self.draw_score()
-        #self.draw_power_up_time()
-        #self.power_up_manager.draw(self.display)
+        self.draw_power_up_time()
+        self.power_up_manager.draw(self.display)
         pygame.display.update()
         pygame.display.flip()
 
@@ -173,6 +173,5 @@ class Game:
                     x_center=500,
                     y_center=40
                 )
-
             else:
                 self.player.has_power_up = False

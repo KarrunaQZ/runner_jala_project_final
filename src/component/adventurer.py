@@ -48,7 +48,7 @@ class Adventurer(Sprite):
             self.air_attack()
         elif self.slide:
             self.adventurer_slide()
-        elif self.attack:
+        elif self.attack and self.has_power_up:
             self.adventurer_attack()
 
         if (user_input[pygame.K_UP] or user_input[pygame.K_SPACE] or user_input[pygame.K_w]) and not self.jump:
@@ -63,13 +63,13 @@ class Adventurer(Sprite):
             self.jump = False
             self.slide = True
             self.attack = False
-        elif user_input[pygame.K_RIGHT] or user_input[pygame.K_d] and self.jump:
+        elif (user_input[pygame.K_RIGHT] or user_input[pygame.K_d]) and self.jump and self.has_power_up:
             self.run = False
             self.slide = False
             self.attack = True
             self.sword_sound.play()# toca o som de ataque
             self.sword_sound.set_volume(0.06)
-        elif (user_input[pygame.K_RIGHT] or user_input[pygame.K_d]) and not self.jump:
+        elif (user_input[pygame.K_RIGHT] or user_input[pygame.K_d]) and not self.jump and self.has_power_up:
             self.run = False
             self.jump = False
             self.slide = False
