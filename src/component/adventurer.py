@@ -55,17 +55,19 @@ class Adventurer(Sprite):
             self.jump = False
             self.slide = True
             self.attack = False
-        elif user_input[pygame.K_RIGHT] and self.jump:
+        elif user_input[pygame.K_RIGHT] or user_input[pygame.K_d] and self.jump:
             self.run = False
             self.slide = False
             self.attack = True
-            self.sword_sound.play() # toca o som de ataque
+            self.sword_sound.play()# toca o som de ataque
             self.sword_sound.set_volume(0.06)
-        elif user_input[pygame.K_RIGHT] and not self.jump:
+        elif user_input[pygame.K_RIGHT] or user_input[pygame.K_d] and not self.jump:
             self.run = False
             self.jump = False
             self.slide = False
             self.attack = True
+            self.jump_sound.play()  # toca o som de pular
+            self.jump_sound.set_volume(0.06)
         elif not self.jump and not self.slide and not self.attack:
             self.run = True
 
@@ -127,8 +129,6 @@ class Adventurer(Sprite):
             self.attack = False
             self.attack_vel = ATTACK_VEL
             self.sprite_index = 0
-        self.jump_sound.play() # toca o som de pular
-        self.jump_sound.set_volume(0.5)   
 
     def air_attack(self):
         if self.rect.y < ADVENTURER_Y:
