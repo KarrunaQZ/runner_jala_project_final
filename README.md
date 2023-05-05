@@ -45,3 +45,14 @@ Este jogo é um projeto feito em Grupo para o Módulo 2 e não é mantido ativam
 </center>
 
 Este projeto está sob a licença MIT. Sinta-se à vontade para usá-lo como base para seus próprios projetos.
+
+<center>
+
+# 👨‍💻 Equipe
+
+</center>
+
+◉ João Guedes
+◉ Mariano Queiroz
+◉ Diego Nascimento
+◉ Erick Roberto
