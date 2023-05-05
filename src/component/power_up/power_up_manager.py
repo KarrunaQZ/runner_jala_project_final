@@ -1,6 +1,6 @@
 import random
 import pygame
-from src.component.obstacle.power_up.sword import SWORD
+from src.component.power_up.sword import SWORD
 
 
 class PowerUpManager:

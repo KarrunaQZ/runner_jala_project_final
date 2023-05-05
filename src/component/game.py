@@ -3,6 +3,7 @@ import pygame.mixer
 import random
 from src.component.adventurer import Adventurer
 from src.component.obstacle.obstacle_manager import ObstacleManager
+from src.component.power_up.power_up_manager import PowerUpManager
 from src.util.constants import TITLE, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, BACKGROUND, FPS
 from src.util.text import draw_message_component
 
@@ -24,6 +25,7 @@ class Game:
         self.background_y = 0
         self.player = Adventurer()
         self.obstacle_manager = ObstacleManager()
+        self.power_up_manager = PowerUpManager()
         self.music_list = [
             r'src/assets/sound/Sound_1.mp3',
             r'src/assets/sound/Sound_2.mp3'
@@ -155,3 +157,18 @@ class Game:
             x_center=730,
             y_center=80
         )
+    def draw_power_up_time(self):
+        if self.player.has_power_up:
+            time_to_show = round((self.player.power_up_time - pygame.time.get_ticks()) / 1000, 2)
+            if time_to_show >= 0:
+                draw_message_component(
+                    f"{self.player.type.capitalize()} enable for {time_to_show} seconds",
+                    self.screen,
+                    font_size=18,
+                    pos_x_center=500,
+                    pos_y_center=40
+                )
+
+            else:
+                self.player.has_power_up = False
+                self.player.type = DEFAULT_TYPE
