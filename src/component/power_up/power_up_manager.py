@@ -18,7 +18,8 @@ class PowerUpManager:
         self.generate_power_up(score)
         for power_up in self.power_ups:
             power_up.update(game_speed, self.power_ups)
-            if player.dino_rect.colliderect(power_up.rect):
+            offset = (power_up.rect.x - player.rect.x), (power_up.rect.y - player.rect.y)
+            if player.adventurer_mask.overlap(power_up.obstacle_mask, offset):
                 power_up.start_time = pygame.time.get_ticks()
                 player.shield = True
                 player.hammer = True
