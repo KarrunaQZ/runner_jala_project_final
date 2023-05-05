@@ -2,6 +2,8 @@
 
 Este é um jogo de aventura em que o jogador deve controlar um personagem enquanto ele corre para escapar de perigosos obstáculos. O jogo é inspirado no famoso jogo do Dino Runner, que é exibido quando a internet está indisponível.
 
+![Imagem do Jogo](firstimage.png)
+
 # 🎮 Como jogar
 
 Para jogar, basta executar o arquivo `main.py`. Use a tecla de espaço, W ou a Seta p/ cima para fazer o personagem pular e evite os obstáculos para continuar correndo, para agachar você pode utilizar o CTRL, S ou Seta p/ baixo. O jogo é infinito, portanto, a dificuldade aumentará gradualmente à medida que você avança. E utilizando a Tecla D ou a Seta p/ direita você pode atacar os Obstáculos.
