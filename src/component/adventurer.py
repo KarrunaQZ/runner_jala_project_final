@@ -49,7 +49,9 @@ class Adventurer(Sprite):
             self.run = False
             self.jump = True
             self.slide = False
-            self.attack = False        
+            self.attack = False 
+            self.jump_sound.play()  # toca o som de pular
+            self.jump_sound.set_volume(0.3)       
         elif user_input[pygame.K_DOWN] or user_input[pygame.K_LCTRL] or user_input[pygame.K_s]:
             self.run = False
             self.jump = False
@@ -66,8 +68,8 @@ class Adventurer(Sprite):
             self.jump = False
             self.slide = False
             self.attack = True
-            self.jump_sound.play()  # toca o som de pular
-            self.jump_sound.set_volume(0.06)
+            self.sword_sound.play()# toca o som de ataque
+            self.sword_sound.set_volume(0.06)
         elif not self.jump and not self.slide and not self.attack:
             self.run = True
 
