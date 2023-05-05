@@ -167,11 +167,11 @@ class Game:
             time_to_show = round((self.player.power_up_time - pygame.time.get_ticks()) / 1000, 2)
             if time_to_show >= 0:
                 draw_message_component(
-                    f"{self.player.type.capitalize()} enable for {time_to_show} seconds",
-                    self.screen,
+                    f"Sword enable for {time_to_show} seconds",
+                    self.display,
                     font_size=18,
-                    pos_x_center=500,
-                    pos_y_center=40
+                    x_center=500,
+                    y_center=40
                 )
 
             else:

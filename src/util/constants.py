@@ -121,7 +121,7 @@ METAL = [
 ]
 
 # Sword
-SWORD_SIZE = 50
+SWORD_SIZE = 80
 
 SWORD = [
     pygame.transform.scale(pygame.image.load(os.path.join(ASSETS_PATH, 'sword/sword.png')), (SWORD_SIZE, SWORD_SIZE))

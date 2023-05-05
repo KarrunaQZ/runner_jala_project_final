@@ -36,7 +36,6 @@ class Adventurer(Sprite):
 
     def setup_state(self):
         self.has_power_up = False
-        self.shield = False
         self.show_text = False
         self.shield_time_up = 0
 

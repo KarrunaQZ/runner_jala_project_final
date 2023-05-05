@@ -14,7 +14,7 @@ class PowerUp(Sprite):
         self.obstacle_mask = pygame.mask.from_surface(self.image)
         self.mask = self.obstacle_mask.to_surface()
         self.rect.x = SCREEN_WIDTH + random.randint(800, 1000)
-        self.rect.y = random.randint(125, 175)
+        self.rect.y = random.randint(190, 250)
         self.start_time = 0
         self.duration = random.randint(5, 10)
 

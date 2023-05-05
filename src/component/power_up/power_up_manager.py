@@ -21,10 +21,7 @@ class PowerUpManager:
             offset = (power_up.rect.x - player.rect.x), (power_up.rect.y - player.rect.y)
             if player.adventurer_mask.overlap(power_up.obstacle_mask, offset):
                 power_up.start_time = pygame.time.get_ticks()
-                player.shield = True
-                player.hammer = True
                 player.has_power_up = True
-                player.type = power_up.type
                 player.power_up_time = power_up.start_time + (power_up.duration * 1000)
                 self.power_ups.remove(power_up)
 
