@@ -29,6 +29,9 @@ class Adventurer(Sprite):
         self.jump = False
         self.slide = False
         self.attack = False
+        pygame.mixer.init() # inicializa o mixer
+        self.jump_sound = pygame.mixer.Sound('src/assets/sound/jump.ogg') # carrega o arquivo de som para pular
+        self.sword_sound = pygame.mixer.Sound('src/assets/sound/sword_hit.wav') # carrega o arquivo de som para pular
 
     def update(self, user_input):
         if self.run:
@@ -42,12 +45,12 @@ class Adventurer(Sprite):
         elif self.attack:
             self.adventurer_attack()
 
-        if user_input[pygame.K_UP] and not self.jump:
+        if (user_input[pygame.K_UP] or user_input[pygame.K_SPACE] or user_input[pygame.K_w]) and not self.jump:
             self.run = False
             self.jump = True
             self.slide = False
-            self.attack = False
-        elif user_input[pygame.K_DOWN]:
+            self.attack = False        
+        elif user_input[pygame.K_DOWN] or user_input[pygame.K_LCTRL] or user_input[pygame.K_s]:
             self.run = False
             self.jump = False
             self.slide = True
@@ -56,6 +59,8 @@ class Adventurer(Sprite):
             self.run = False
             self.slide = False
             self.attack = True
+            self.sword_sound.play() # toca o som de ataque
+            self.sword_sound.set_volume(0.06)
         elif user_input[pygame.K_RIGHT] and not self.jump:
             self.run = False
             self.jump = False
@@ -122,6 +127,8 @@ class Adventurer(Sprite):
             self.attack = False
             self.attack_vel = ATTACK_VEL
             self.sprite_index = 0
+        self.jump_sound.play() # toca o som de pular
+        self.jump_sound.set_volume(0.5)   
 
     def air_attack(self):
         if self.rect.y < ADVENTURER_Y:
@@ -138,6 +145,8 @@ class Adventurer(Sprite):
             self.attack = False
             self.air_attack_vel = AIR_ATTACK_VEL
             self.sprite_index = 0
+        self.jump_sound.play() # toca o som de pular
+        self.jump_sound.set_volume(0.5)   
 
     def reset_adventurer(self):
         self.image = ADVENTURER_IDLE[0].convert_alpha()

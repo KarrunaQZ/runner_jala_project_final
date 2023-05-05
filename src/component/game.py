@@ -1,4 +1,6 @@
 import pygame
+import pygame.mixer
+import random
 from src.component.adventurer import Adventurer
 from src.component.obstacle.obstacle_manager import ObstacleManager
 from src.util.constants import TITLE, ICON, SCREEN_HEIGHT, SCREEN_WIDTH, BACKGROUND, FPS
@@ -22,6 +24,12 @@ class Game:
         self.background_y = 0
         self.player = Adventurer()
         self.obstacle_manager = ObstacleManager()
+        self.music_list = [
+            r'src/assets/sound/Sound_1.mp3',
+            r'src/assets/sound/Sound_2.mp3'
+        ]
+        pygame.mixer.music.load(random.choice(self.music_list))
+        pygame.mixer.music.play(-1)
 
     def execute(self):
         self.playing = True
@@ -29,9 +37,9 @@ class Game:
             if not self.running:
                 self.show_initial_menu()
         pygame.display.quit()
-        pygame.quit()
+        pygame.quit()        
 
-    def show_initial_menu(self):
+    def show_initial_menu(self):      
         self.display.blit(BACKGROUND, (0, 0))
         if self.death_count == 0:
             self.draw_start_message()
@@ -84,7 +92,7 @@ class Game:
                 self.playing = False
             elif event.type == pygame.KEYDOWN:
                 self.run()
-
+                
     def run(self):
         self.running = True
         self.player.run = True
