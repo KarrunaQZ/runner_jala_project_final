@@ -25,12 +25,12 @@ class ObstacleManager:
             if game.player.adventurer_mask.overlap(obstacle.obstacle_mask, offset) and game.player.attack and type(obstacle) != Metal:
                 self.obstacles.remove(obstacle)
             elif game.player.adventurer_mask.overlap(obstacle.obstacle_mask, offset) and (not game.player.attack or (type(obstacle) == Metal)):
+                self.death_sound.play()
+                self.death_sound.set_volume(0.2)
                 pygame.time.delay(500)
                 game.player.reset_adventurer()
                 game.running = False
                 game.death_count += 1
-                self.death_sound.play()
-                self.death_sound.set_volume(0.2)
                 break
 
     def reset_obstacles(self):
