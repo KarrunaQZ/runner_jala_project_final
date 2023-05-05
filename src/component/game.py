@@ -99,6 +99,7 @@ class Game:
         self.running = True
         self.player.run = True
         self.obstacle_manager.reset_obstacles()
+        self.power_up_manager.reset_power_ups()
         self.game_speed = 15
         self.current_score = 0
         while self.running:
@@ -118,6 +119,7 @@ class Game:
         self.player.update(user_input)
         self.obstacle_manager.update(self)
         self.update_current_score()
+        self.power_up_manager.update(self.current_score, self.game_speed, self.player)
 
     def update_current_score(self):
         self.current_score += 1
@@ -132,6 +134,8 @@ class Game:
         self.player.draw(self.display)
         self.obstacle_manager.draw(self.display)
         self.draw_score()
+        self.draw_power_up_time()
+        self.power_up_manager.draw(self.display)
         pygame.display.update()
         pygame.display.flip()
 
@@ -157,6 +161,7 @@ class Game:
             x_center=730,
             y_center=80
         )
+
     def draw_power_up_time(self):
         if self.player.has_power_up:
             time_to_show = round((self.player.power_up_time - pygame.time.get_ticks()) / 1000, 2)
@@ -171,4 +176,3 @@ class Game:
 
             else:
                 self.player.has_power_up = False
-                self.player.type = DEFAULT_TYPE

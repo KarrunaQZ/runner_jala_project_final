@@ -1,6 +1,6 @@
 import pygame
 from src.util.constants import SWORD
-from src.component.obstacle.power_up.power_up import PowerUp
+from src.component.power_up.power_up import PowerUp
 
 
 class Sword(PowerUp):

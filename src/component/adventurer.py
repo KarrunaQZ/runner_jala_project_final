@@ -32,6 +32,13 @@ class Adventurer(Sprite):
         pygame.mixer.init() # inicializa o mixer
         self.jump_sound = pygame.mixer.Sound('src/assets/sound/jump.ogg') # carrega o arquivo de som para pular
         self.sword_sound = pygame.mixer.Sound('src/assets/sound/sword_hit.wav') # carrega o arquivo de som para pular
+        self.setup_state()
+
+    def setup_state(self):
+        self.has_power_up = False
+        self.shield = False
+        self.show_text = False
+        self.shield_time_up = 0
 
     def update(self, user_input):
         if self.run:
